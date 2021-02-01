@@ -2,14 +2,14 @@ import requests
 
 base_url = "https://faucetpay.io/api/v1/"
 api_parameters = [
-	api_key,
-	currency,
-	address,
-	amount,
-	to,
-	referral,
-	ip_address,
-	count
+	'api_key',
+	'currency',
+	'address',
+	'amount',
+	'to',
+	'referral',
+	'ip_address',
+	'count'
 ]
 methods = {
 	'balance': ['checkBalance', 'myBalance', 'balance', 'getBalance',
