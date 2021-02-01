@@ -21,17 +21,21 @@ methods = {
 	'send': ['send', 'sendTo', 'transfer', 'makeTx',
 			 'send_to', 'make_tx', 'sendto', 'maketx'],
 	'payouts': ['payouts', 'myPayouts', 'my_payouts'],
-	'listv1/faucetlist': ['listFaucets', 'fetchRotator',
-						  'list_faucets', 'fetch_rotator']
+	'faucetlist': ['listFaucets', 'fetchRotator',
+				   'list_faucets', 'fetch_rotator']
 }
 
 def callAPI(api_key, method, **kwargs):
+	"""
+	A function to dynamically make a POST request to FaucetPay with no try-catch
+	blocks, supports any parameters as a Keyword Arguments.
+	"""
 	data = dict(
 		api_key=api_key,
 	)
 
 	for key in api_parameters:
-		if kwargs[key]:
+		if key in kwargs:
 			data[key] = kwargs[key]
 
 	res = requests.post(base_url + method, data=data)
@@ -39,13 +43,29 @@ def callAPI(api_key, method, **kwargs):
 
 	return res
 
-class API:
+class Api:
 	def __init__(self, api_key):
+		"""
+		Creates an Api class for FaucetPay regular API access with api_key as
+		an initial required argument
+		"""
 		self.api_key = api_key
 
 	def __getattr__(self, attr):
-		for key, value in methods:
-			if attr in value:
+		"""
+		Dynamically returns a function for user to call. If you want to access
+		specific endpoint with some parameters, please consider doing this:
+		>>> # Example
+		>>> myAPI.check_address(address="TestBTCAddress")
+		{ ... JSON Response ... }
+		>>> myAPI.check_address(address="TestDOGEAddress", currency="DOGE")
+		{ ... JSON Response For DOGE ... }
+
+		You do not need to provide api_key anymore since you already done that
+		at class initialization.
+		"""
+		for key in methods:
+			if attr in methods[key]:
 				attr = key
 
 		return (lambda **kwargs: callAPI(self.api_key, attr, **kwargs))
