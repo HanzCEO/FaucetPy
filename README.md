@@ -20,13 +20,13 @@ FaucetPay + Python = FaucetPy
 
 # Endpoints and Its Aliases
 `balance`: `checkBalance`, `myBalance`, `balance`, `getBalance`,
-`check_balance`, `my_balance`, `get_balance`<br/>
+`check_balance`, `my_balance`, `get_balance`<br/><br/>
 `currencies`: `supportedCurrencies`, `currencies`, `availableCurrencies`,
-`supported_currencies`, `available_currencies`<br/>
-`checkaddress`: `checkAddress`, `checkaddress`, `isaddressexist`
-`check_address`, `is_address_exist`<br/>
-`send`: `send`, `sendTo`, `transfer`, `makeTx`,
-`send_to`, `make_tx`, `sendto`, `maketx`<br/>
-`payouts`: `payouts`, `myPayouts`, `my_payouts` <br/>
+`supported_currencies`, `available_currencies`<br/><br/>
+`checkaddress`: `checkAddress`, `checkaddress`, `isaddressexist`,
+`check_address`, `is_address_exist`<br/><br/>
+`send`: `send`, `sendTo`, `transfer`, `makeTx`,<br/><br/>
+`send_to`, `make_tx`, `sendto`, `maketx`<br/><br/>
+`payouts`: `payouts`, `myPayouts`, `my_payouts` <br/><br/>
 `faucetlist`: `listFaucets`, `fetchRotator`,
-`list_faucets`, `fetch_rotator
+`list_faucets`, `fetch_rotator`<br/><br/>
